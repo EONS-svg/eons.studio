@@ -173,7 +173,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:var(--nav-h);padding
 .pc.hot .pc-btn{background:linear-gradient(135deg,var(--v),var(--v2));border-color:transparent;color:#fff;box-shadow:0 0 16px var(--glow);}
 
 /* ── CHAT AREA ── */
-#mainWrap{display:none;position:fixed;inset:0;top:var(--nav-h);z-index:2;flex-direction:column;background:var(--bg);}
+#mainWrap{display:none;position:fixed;inset:0;top:var(--nav-h);z-index:10;flex-direction:column;background:var(--bg);}
+#landingView{position:relative;z-index:2;}
 .chat-layout{display:flex;height:100%;overflow:hidden;}
 .chat-sidebar{width:240px;flex-shrink:0;border-right:1px solid var(--border);background:var(--sidebar-bg);padding:12px;overflow-y:auto;display:flex;flex-direction:column;gap:8px;}
 @media(max-width:768px){.chat-sidebar{display:none;}}
