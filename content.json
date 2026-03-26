@@ -1,0 +1,52 @@
+{
+  "hero": {
+    "headline": "Cinematic 3D That Transforms Brands",
+    "subheadline": "We craft high‑impact visuals that turn attention into revenue.",
+    "video": "https://www.youtube.com/embed/VIDEO_ID"
+  },
+
+  "process": [
+    {
+      "title": "Discovery & Brand Alignment",
+      "description": "We dive deep into your brand, audience, and goals to understand the emotional and strategic foundation of your project.",
+      "icon": "icons/mobius.svg"
+    },
+    {
+      "title": "Creative Direction & Concept Development",
+      "description": "We craft a cinematic concept that blends storytelling, design, and brand psychology — ensuring every frame has purpose.",
+      "icon": "icons/lightbulb.svg"
+    },
+    {
+      "title": "Production & 3D Animation",
+      "description": "Our team brings the vision to life with high‑end 3D, motion design, and visual effects that elevate your brand beyond competitors.",
+      "icon": "icons/camera.svg"
+    },
+    {
+      "title": "Delivery & Optimization",
+      "description": "We deliver polished assets optimized for your platforms — and provide guidance on maximizing impact across your campaign.",
+      "icon": "icons/check.svg"
+    }
+  ],
+
+  "portfolio": [
+    {
+      "title": "Sample Project",
+      "video": "https://www.youtube.com/embed/VIDEO_ID",
+      "thumbnail": "assets/portfolio-thumb.jpg"
+    }
+  ],
+
+  "testimonials": [
+    {
+      "name": "Client Name",
+      "role": "CEO, Company",
+      "quote": "This studio transformed our brand with cinematic visuals that elevated our entire identity."
+    }
+  ],
+
+  "aiLeadMagnet": {
+    "headline": "Start Your Cinematic Brand Vision",
+    "description": "Use our AI strategist to generate a personalized brand vision and campaign direction.",
+    "cta": "Generate Your Brand Vision"
+  }
+}
