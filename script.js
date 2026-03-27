@@ -1,3 +1,45 @@
+/* =========================================================
+   THEME TOGGLE INJECTION + THEME SYSTEM
+   ========================================================= */
+
+// Inject the theme toggle into the DOM
+function injectThemeToggle() {
+  const toggle = document.createElement("div");
+  toggle.className = "theme-toggle";
+  toggle.innerHTML = `<div class="theme-toggle-thumb"></div>`;
+  document.body.appendChild(toggle);
+}
+
+// Initialize theme system
+function initThemeSystem() {
+  const html = document.documentElement;
+  const saved = localStorage.getItem("theme");
+
+  // Load saved theme or default to dark
+  if (saved) {
+    html.classList.add(saved);
+  } else {
+    html.classList.add("theme-dark");
+  }
+
+  // Toggle logic
+  document.querySelector(".theme-toggle").addEventListener("click", () => {
+    if (html.classList.contains("theme-dark")) {
+      html.classList.remove("theme-dark");
+      html.classList.add("theme-light");
+      localStorage.setItem("theme", "theme-light");
+    } else {
+      html.classList.remove("theme-light");
+      html.classList.add("theme-dark");
+      localStorage.setItem("theme", "theme-dark");
+    }
+  });
+}
+
+/* =========================================================
+   CMS LOGIC (YOUR ORIGINAL CODE)
+   ========================================================= */
+
 async function loadContent() {
   const response = await fetch("content.json");
   const data = await response.json();
@@ -14,7 +56,7 @@ async function loadContent() {
         const block = document.createElement("div");
         block.innerHTML = `
           <textarea data-section="${section}" data-index="${index}">
-            ${JSON.stringify(item, null, 2)}
+${JSON.stringify(item, null, 2)}
           </textarea>
         `;
         wrapper.appendChild(block);
@@ -22,7 +64,7 @@ async function loadContent() {
     } else {
       wrapper.innerHTML += `
         <textarea data-section="${section}">
-          ${JSON.stringify(data[section], null, 2)}
+${JSON.stringify(data[section], null, 2)}
         </textarea>
       `;
     }
@@ -74,3 +116,13 @@ async function getSHA(token) {
   const data = await res.json();
   return data.sha;
 }
+
+/* =========================================================
+   DOM READY — INITIALIZE EVERYTHING
+   ========================================================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+  injectThemeToggle();
+  initThemeSystem();
+  loadContent();
+});
