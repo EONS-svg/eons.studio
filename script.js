@@ -2,7 +2,6 @@
    THEME TOGGLE INJECTION + THEME SYSTEM
    ========================================================= */
 
-// Inject the theme toggle into the DOM
 function injectThemeToggle() {
   const toggle = document.createElement("div");
   toggle.className = "theme-toggle";
@@ -10,19 +9,16 @@ function injectThemeToggle() {
   document.body.appendChild(toggle);
 }
 
-// Initialize theme system
 function initThemeSystem() {
   const html = document.documentElement;
   const saved = localStorage.getItem("theme");
 
-  // Load saved theme or default to dark
   if (saved) {
     html.classList.add(saved);
   } else {
     html.classList.add("theme-dark");
   }
 
-  // Toggle logic
   document.querySelector(".theme-toggle").addEventListener("click", () => {
     if (html.classList.contains("theme-dark")) {
       html.classList.remove("theme-dark");
@@ -37,92 +33,61 @@ function initThemeSystem() {
 }
 
 /* =========================================================
-   CMS LOGIC (YOUR ORIGINAL CODE)
+   PUBLIC SITE RENDERING LOGIC
    ========================================================= */
 
-async function loadContent() {
-  const response = await fetch("content.json");
-  const data = await response.json();
+async function renderSite() {
+  const data = await fetch("content.json").then(r => r.json());
 
-  const editor = document.getElementById("editor");
-  editor.innerHTML = "";
+  // HERO
+  document.querySelector(".hero-title").innerText = data.hero.headline;
+  document.querySelector(".hero-subtitle").innerText = data.hero.subheadline;
+  document.querySelector(".hero-video").src = data.hero.video;
 
-  Object.keys(data).forEach(section => {
-    const wrapper = document.createElement("div");
-    wrapper.innerHTML = `<h2>${section}</h2>`;
-
-    if (Array.isArray(data[section])) {
-      data[section].forEach((item, index) => {
-        const block = document.createElement("div");
-        block.innerHTML = `
-          <textarea data-section="${section}" data-index="${index}">
-${JSON.stringify(item, null, 2)}
-          </textarea>
-        `;
-        wrapper.appendChild(block);
-      });
-    } else {
-      wrapper.innerHTML += `
-        <textarea data-section="${section}">
-${JSON.stringify(data[section], null, 2)}
-        </textarea>
-      `;
-    }
-
-    editor.appendChild(wrapper);
-  });
-}
-
-async function saveContent() {
-  const token = document.getElementById("token").value;
-  const response = await fetch("content.json");
-  const original = await response.json();
-
-  const textareas = document.querySelectorAll("textarea");
-
-  textareas.forEach(t => {
-    const section = t.dataset.section;
-    const index = t.dataset.index;
-
-    if (index !== undefined) {
-      original[section][index] = JSON.parse(t.value);
-    } else {
-      original[section] = JSON.parse(t.value);
-    }
+  // PROCESS
+  const processContainer = document.querySelector("#process");
+  processContainer.innerHTML = "";
+  data.process.forEach(step => {
+    processContainer.innerHTML += `
+      <div class="process-step">
+        <img src="${step.icon}" />
+        <h3>${step.title}</h3>
+        <p>${step.description}</p>
+      </div>
+    `;
   });
 
-  const content = btoa(JSON.stringify(original, null, 2));
-
-  await fetch("https://api.github.com/repos/EONS-svg/eons.studio/contents/content.json", {
-    method: "PUT",
-    headers: {
-      "Authorization": `token ${token}`,
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      message: "Updated content.json via CMS",
-      content: content,
-      sha: await getSHA(token)
-    })
+  // PORTFOLIO
+  const portfolio = document.querySelector("#portfolio");
+  portfolio.innerHTML = "";
+  data.portfolio.forEach(item => {
+    portfolio.innerHTML += `
+      <div class="portfolio-item">
+        <iframe src="${item.video}" loading="lazy"></iframe>
+        <h4>${item.title}</h4>
+      </div>
+    `;
   });
 
-  alert("Content updated!");
-}
-
-async function getSHA(token) {
-  const res = await fetch("https://api.github.com/repos/EONS-svg/eons.studio/contents/content.json", {
-    headers: { "Authorization": `token ${token}` }
+  // TESTIMONIALS
+  const testimonials = document.querySelector("#testimonials");
+  testimonials.innerHTML = "";
+  data.testimonials.forEach(t => {
+    testimonials.innerHTML += `
+      <blockquote>
+        “${t.quote}”
+        <span>- ${t.name}, ${t.role}</span>
+      </blockquote>
+    `;
   });
-  const data = await res.json();
-  return data.sha;
 }
 
 /* =========================================================
-   DOM READY — INITIALIZE EVERYTHING
+   DOM READY
    ========================================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
   injectThemeToggle();
   initThemeSystem();
-  loadContent();
+  renderSite();
 });
