@@ -731,10 +731,13 @@ class Particle {
   }
 }
 for (let i = 0; i < PARTICLE_COUNT; i++) particles.push(new Particle());
-window.addEventListener('resize', () => { W = canvas.width = innerWidth; H = canvas.height = innerHeight; });
+window.addEventListener('resize', () => { W = innerWidth; H = innerHeight; canvas.width = W; canvas.height = H; }, {passive:true});
+let _rafPaused = false;
+document.addEventListener('visibilitychange', () => { _rafPaused = document.hidden; });
 
 (function loop() {
   requestAnimationFrame(loop);
+  if (_rafPaused) return;
   ctx.clearRect(0, 0, W, H);
   const isLight = document.documentElement.getAttribute('data-theme') === 'light';
   ctx.globalAlpha = isLight ? .15 : 1;
@@ -1003,9 +1006,9 @@ function selectPurpose(el, val) {
 
 /* ── LEADS STORAGE ── */
 function saveLeads(user) {
-  const leads = JSON.parse(localStorage.getItem('eons_leads') || '[]');
+  const leads = JSON.parse(localStorage.getItem('eons_ai_leads') || '[]');
   leads.unshift({ ...user, ts: Date.now() });
-  localStorage.setItem('eons_leads', JSON.stringify(leads.slice(0, 200)));
+  localStorage.setItem('eons_ai_leads', JSON.stringify(leads.slice(0, 200)));
 }
 
 /* ── LAUNCH CHAT ── */
@@ -1015,6 +1018,7 @@ function launchChat() {
   updateCredits();
   loadConversations();
   setMode('explore');
+  if (!chatHistory.length) initChat();
 }
 
 /* ── CHAT INIT ── */
@@ -1256,7 +1260,7 @@ function switchTTab(id, btn) {
   if (id === 'leads' || id === 'overview') renderTeamDash();
 }
 function renderTeamDash() {
-  const leads = JSON.parse(localStorage.getItem('eons_leads') || '[]');
+  const leads = JSON.parse(localStorage.getItem('eons_ai_leads') || '[]');
   const lw = document.getElementById('leadsTableWrap');
   if (lw) {
     if (!leads.length) {
@@ -1407,7 +1411,7 @@ let conversations = [];
 let activeConvId = null;
 
 function loadConversations() {
-  conversations = JSON.parse(localStorage.getItem('eons_convs') || '[]');
+  conversations = JSON.parse(localStorage.getItem('eons_ai_convs') || '[]');
   renderSidebar();
 }
 
@@ -1424,7 +1428,7 @@ function saveCurrentConversation() {
     conversations.unshift({ id: activeConvId, title, history: [...chatHistory], mode: currentMode, ts: Date.now() });
   }
   conversations = conversations.slice(0, 50);
-  localStorage.setItem('eons_convs', JSON.stringify(conversations));
+  localStorage.setItem('eons_ai_convs', JSON.stringify(conversations));
   renderSidebar();
 }
 
@@ -1471,7 +1475,7 @@ function loadConversation(id) {
 function deleteConversation(id, e) {
   e.stopPropagation();
   conversations = conversations.filter(c => c.id !== id);
-  localStorage.setItem('eons_convs', JSON.stringify(conversations));
+  localStorage.setItem('eons_ai_convs', JSON.stringify(conversations));
   if (activeConvId === id) {
     activeConvId = null;
     newConversation();
@@ -1505,16 +1509,16 @@ function renderSidebar() {
 
 /* ══ SAVED WORK ══ */
 function saveWork(title, content, type) {
-  const saved = JSON.parse(localStorage.getItem('eons_saved') || '[]');
+  const saved = JSON.parse(localStorage.getItem('eons_ai_saved') || '[]');
   saved.unshift({ id: Date.now(), title, content, type, ts: Date.now() });
-  localStorage.setItem('eons_saved', JSON.stringify(saved.slice(0, 50)));
+  localStorage.setItem('eons_ai_saved', JSON.stringify(saved.slice(0, 50)));
   toast('Saved! 📋', title + ' saved to Team Portal.');
 }
 
 function renderSavedWork() {
   const wrap = document.getElementById('savedWorkWrap');
   if (!wrap) return;
-  const saved = JSON.parse(localStorage.getItem('eons_saved') || '[]');
+  const saved = JSON.parse(localStorage.getItem('eons_ai_saved') || '[]');
   if (!saved.length) {
     wrap.innerHTML = '<p style="font-size:13px;color:var(--dim);">No saved work yet — generate documents in the AI chat and they appear here.</p>';
     return;
