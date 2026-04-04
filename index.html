@@ -1306,7 +1306,7 @@ async function callAI(msgs){
   });
   if(!r.ok){const e=await r.json().catch(()=>({}));return'Connection error: '+(e.error?.message||r.status);}
   const d=await r.json();
-  return d.content?.[0]?.text||'Something went wrong — email eonstudioanimation@gmail.com';
+  return d.text||d.content?.[0]?.text||'Something went wrong — email eonstudioanimation@gmail.com';
 }
 
 const chatLog=[];
