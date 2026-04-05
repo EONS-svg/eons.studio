@@ -1551,14 +1551,7 @@ function saveSeSection(sectionId,keys){
   storeSet('eons_site_content',JSON.stringify(sc));applySiteContent(sc);toast('Content Saved! ✏️','Site updated live.');
 }
 function applySiteContent(sc){
-  [1,2,3].forEach(i=>{
-    const q=document.getElementById('testi'+i+'Q');const n=document.getElementById('testi'+i+'Name');const c=document.getElementById('testi'+i+'Co');const s=document.getElementById('testi'+i+'Stars');const av=document.getElementById('testi'+i+'Av');
-    if(q&&sc['testi'+i+'_quote'])q.textContent='"'+sc['testi'+i+'_quote']+'"';
-    if(n&&sc['testi'+i+'_name'])n.textContent='— '+sc['testi'+i+'_name'];
-    if(c&&sc['testi'+i+'_co'])c.textContent=sc['testi'+i+'_co'];
-    if(s&&sc['testi'+i+'_stars']){const stars=parseInt(sc['testi'+i+'_stars'])||5;s.textContent='★'.repeat(stars)+'☆'.repeat(5-stars);}
-    if(av&&sc['testi'+i+'_av'])av.textContent=sc['testi'+i+'_av'];
-  });
+  
 }
 (()=>{const sc=getSiteContent();if(Object.keys(sc).length)applySiteContent(sc);})();
 
