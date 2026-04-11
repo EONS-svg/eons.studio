@@ -1259,7 +1259,8 @@ function checkPw(){
   const pw=document.getElementById('dlPw').value;const err=document.getElementById('dlErr');
   if(isLockedOut()){err.textContent='Too many attempts. Try again in '+getLockoutRemaining()+' minute(s).';err.classList.add('show');document.getElementById('dlPw').value='';return;}
   verifyPassword(pw).then(valid=>{
-    if(valid){resetFailedAttempts();dashAuth=true;document.getElementById('dashLogin').style.display='none';document.getElementById('dashContent').style.display='block';renderDash();err.classList.remove('show');}
+    
+    if(valid){resetFailedAttempts();dashAuth=true;if(window.EONS_KV)window.EONS_KV.unlock(pw);document.getElementById('dashLogin').style.display='none';document.getElementById('dashContent').style.display='block';renderDash();err.classList.remove('show');}
     else{const a=recordFailedAttempt();const rem=SECURITY.max_attempts-a;err.textContent=isLockedOut()?'Too many failed attempts. Locked for '+SECURITY.lockout_minutes+' min.':'Incorrect password. '+rem+' attempt(s) remaining.';err.classList.add('show');document.getElementById('dlPw').value='';document.getElementById('dlPw').focus();}
   });
 }
