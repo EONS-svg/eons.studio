@@ -1409,6 +1409,7 @@ let S={
   pendingFile:null,guidelines:null,notes:'',
   authMode:'in'
 };
+window.S = S;
 
 /* ══════════════════════════════════════
    ACCOUNT STORAGE (localStorage fallback for leads)
@@ -2468,5 +2469,6 @@ openDB().then(()=>{
 
 </script>
 <script src="/lead-conv-capture.js"></script>
+<script src="/history-panel.js"></script>
 </body>
 </html>
