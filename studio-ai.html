@@ -14,11 +14,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="EONS AI">
+<meta name="apple-mobile-web-app-title" content="LEGACY by EONS">
 <meta name="theme-color" content="#05040e">
-<meta name="description" content="AI-powered brand strategist and creative director. Generate professional briefs, storyboards, and visual direction — powered by EONS Animation Studio.">
+<meta name="description" content="LEGACY by EONS — AI-powered brand strategist and creative director. Generate professional briefs, storyboards, and visual direction — powered by EONS Animation Studio.">
 <link rel="canonical" href="https://eons.studio/studio-ai.html">
-<title>EONS AI — Creative Intelligence</title>
+<title>LEGACY by EONS — Intelligence built for Brands</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Barlow+Condensed:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
@@ -822,7 +822,7 @@ textarea.cp-input{resize:none;min-height:52px;grid-column:1/-1;}
      LANDING NAV — always visible
 ════════════════════════════════ -->
 <nav class="land-nav" id="landNav">
-  <div class="land-nav-logo"><div class="logo-dot"></div>EONS <em>AI</em></div>
+  <div class="land-nav-logo"><div class="logo-dot"></div>LEGACY <em>by EONS</em></div>
   <div class="land-nav-badge"><span class="land-nav-dot"></span>Creative Director · Online</div>
   <div class="land-nav-right">
     <button class="land-theme-btn" id="landThemeBtn" onclick="toggleTheme()">☀️</button>
@@ -850,7 +850,7 @@ textarea.cp-input{resize:none;min-height:52px;grid-column:1/-1;}
     </div>
     <div class="land-hero-gate-right">
       <div class="land-gate-card">
-        <div class="gate-eyebrow">Access EONS AI</div>
+        <div class="gate-eyebrow">Access LEGACY by EONS</div>
         <div class="gate-title">Build Your Concept</div>
         <div class="gate-sub">Sign in to access your Brand DNA, conversation history, and saved docs. New? Create an account in 30 seconds.</div>
         <div class="auth-tabs" style="margin-bottom:16px;">
@@ -969,7 +969,7 @@ textarea.cp-input{resize:none;min-height:52px;grid-column:1/-1;}
 
   <!-- Desktop Sidebar -->
   <nav class="sidebar" id="sidebar">
-    <div class="sidebar-logo"><div class="logo-dot"></div><span class="sidebar-logo-txt">EONS <em>AI</em></span></div>
+    <div class="sidebar-logo"><div class="logo-dot"></div><span class="sidebar-logo-txt">LEGACY <em>by EONS</em></span></div>
     <button class="nav-item active" data-view="chat" onclick="switchView('chat',this)"><span class="nav-icon">💬</span><span class="nav-lbl">Chat</span></button>
     <button class="nav-item" data-view="passport" onclick="switchView('passport',this)"><span class="nav-icon">🧬</span><span class="nav-lbl">Brand DNA</span></button>
     <button class="nav-item" data-view="docs" onclick="switchView('docs',this)"><span class="nav-icon">📁</span><span class="nav-lbl">Docs & Notes</span></button>
@@ -983,7 +983,7 @@ textarea.cp-input{resize:none;min-height:52px;grid-column:1/-1;}
 
   <!-- Mobile Header -->
   <header class="mob-header" id="mobHeader">
-    <div class="mob-logo"><div class="logo-dot"></div>EONS <em>AI</em></div>
+    <div class="mob-logo"><div class="logo-dot"></div>LEGACY <em>by EONS</em></div>
     <div class="mob-status"><div class="status-dot"></div>Online</div>
     <div class="mob-acts">
       <button class="mob-btn" onclick="openTeam()">🏢</button>
@@ -1007,7 +1007,7 @@ textarea.cp-input{resize:none;min-height:52px;grid-column:1/-1;}
       <div class="chat-view-header">
         <div class="cvh-left">
           <div class="cvh-av">✦</div>
-          <div><div class="cvh-name">EONS AI</div><div class="cvh-status"><div class="status-dot"></div>Creative Director · Online</div></div>
+          <div><div class="cvh-name">LEGACY by EONS</div><div class="cvh-status"><div class="status-dot"></div>Creative Director · Online</div></div>
           <div class="cvh-divider"></div>
           <div class="cvh-session" id="cvhSession">New Session</div>
         </div>
@@ -1223,7 +1223,7 @@ textarea.cp-input{resize:none;min-height:52px;grid-column:1/-1;}
 <!-- INSTALL BANNER -->
 <div class="install-banner" id="installBanner">
   <div class="install-icon">📲</div>
-  <div><div class="install-title">Add EONS AI to Home Screen</div><div class="install-sub">Install for the full app experience</div></div>
+  <div><div class="install-title">Add LEGACY by EONS to Home Screen</div><div class="install-sub">Install for the full app experience</div></div>
   <button class="install-add" id="installBtn">Install →</button>
   <button class="install-close" onclick="closeInstall()">✕</button>
 </div>
@@ -1567,7 +1567,7 @@ function renderGreeting(){
     document.getElementById('cvhSession').textContent=S.dna.brandName+' — Session';
   } else {
     c.innerHTML=`<div class="welcome-state">
-      <div class="welcome-eyebrow">EONS Creative Intelligence</div>
+      <div class="welcome-eyebrow">LEGACY by EONS</div>
       <div class="welcome-hed">Your Brand,<br><em id="cycleWord">Understood.</em></div>
       <div class="welcome-sub">Tell me about your brand, your market, or your next campaign — I'll think with you and build your Brand DNA as we go.</div>
       <div class="starters">
@@ -1601,9 +1601,9 @@ function buildSysPrompt(){
   const notesCtx=S.notes?`\n\nUSER NOTES: "${S.notes}"\nReference these naturally when relevant.`:'';
   const userCtx=`\n\nUSER: Name: ${S.user?.name||''}. Company: ${S.user?.company||'not specified'}. ${S.returning?'Returning user.':'New user.'}`;
 
-  return `You are EONS AI — the creative intelligence of EONS Animation Studio, a NYC-based strategy-led 3D animation studio. You are not a chatbot. You are a senior creative director, brand strategist, and marketing architect — the kind of person founders pay $400/hr to think with.
-
-EONS DNA — YOUR IDENTITY AND PHILOSOPHY:
+  return return `You are LEGACY — the creative intelligence of EONS Animation Studio, a NYC-based strategy-led 3D animation studio. You are not a chatbot. You are a senior creative director, brand strategist, and marketing architect — the kind of person founders pay $400/hr to think with.
+ 
+LEGACY DNA — YOUR IDENTITY AND PHILOSOPHY:
 You embody EONS's core belief: visual systems are strategy made tangible. Brands are won or lost in the first 400 milliseconds of visual contact. 3D motion is the most powerful tool for encoding brand memory in the human brain. You are direct, confident, and push back when a direction won't serve the business goal. You never waste words. You never say "Great question!" or "Certainly!" You are the smartest collaborator in the room.
 
 EXPERTISE:
@@ -1614,7 +1614,7 @@ EXPERTISE:
 ENGAGEMENT RULES:
 1. Read the room in the first 1–2 exchanges. Identify: time-poor founder (needs fast clarity), marketing lead (wants structured outputs), or explorer (needs direction). Adapt depth and pace.
 2. Mirror the user's exact language back to them. This creates the feeling of being understood.
-3. Ask ONE sharp question at a time — the single most strategically revealing one.
+3. Ask ONE sharp/reflective question at a time — the single most strategically revealing one.
 4. Lead with insight before asking for more information. Demonstrate you understand their brand or market before asking them to explain it.
 5. Surface 3D animation when it genuinely amplifies the strategy — tied to a specific business outcome (conversion, trust, differentiation, attention, authority). Never pitch before earning it through value. If the user says they don't need 3D suggestions, drop it and operate as a pure marketing strategist.
 
@@ -1750,7 +1750,7 @@ function addMsg(role,text){
   av.textContent=role==='user'?(S.user?S.user.initials||S.user.name[0]:'U'):'✦';
   const content=document.createElement('div');content.className='ch-content';
   const sender=document.createElement('div');sender.className='ch-sender';
-  sender.textContent=role==='user'?(S.user?S.user.name:'You'):'EONS AI';
+  sender.textContent=role==='user'?(S.user?S.user.name:'You'):'LEGACY';
   const textDiv=document.createElement('div');textDiv.className='ch-text';
   content.appendChild(sender);content.appendChild(textDiv);
   div.appendChild(av);div.appendChild(content);
@@ -2141,7 +2141,7 @@ function showCalendlyBanner(){
   if(document.getElementById('calendlyBanner'))return;
   const msgs=document.getElementById('chatMessages');if(!msgs)return;
   const banner=document.createElement('div');banner.className='ch-msg assistant';banner.id='calendlyBanner';
-  banner.innerHTML=`<div class="ch-av">✦</div><div class="ch-content"><div class="ch-sender">EONS AI</div><div class="ch-text"><div class="calendly-banner"><div class="calendly-banner-top"><span class="calendly-banner-icon">📅</span><div><div class="calendly-banner-title">Ready to move forward?</div><div class="calendly-banner-sub">Book a free 30-min strategy call with Ryan. We'll review your concept, align on direction, and scope the right package.</div></div></div><div class="calendly-btns"><button class="cal-book-btn" onclick="openCalEmbed()">Book a Free Strategy Call →</button><button class="cal-later-btn" onclick="dismissCal()">Maybe later</button></div><div class="cal-embed-wrap" id="calEmbedWrap"></div></div></div></div>`;
+  banner.innerHTML=`<div class="ch-av">✦</div><div class="ch-content"><div class="ch-sender">LEGACY</div><div class="ch-text"><div class="calendly-banner"><div class="calendly-banner-top"><span class="calendly-banner-icon">📅</span><div><div class="calendly-banner-title">Ready to move forward?</div><div class="calendly-banner-sub">Book a free 30-min strategy call with Ryan. We'll review your concept, align on direction, and scope the right package.</div></div></div><div class="calendly-btns"><button class="cal-book-btn" onclick="openCalEmbed()">Book a Free Strategy Call →</button><button class="cal-later-btn" onclick="dismissCal()">Maybe later</button></div><div class="cal-embed-wrap" id="calEmbedWrap"></div></div></div></div>`;
   msgs.appendChild(banner);msgs.scrollTop=msgs.scrollHeight;
 }
 function openCalEmbed(){
@@ -2169,7 +2169,7 @@ function exportConversation(){
     const content=typeof m.content==='string'?m.content:(m.content[0]?.text||'');
     lines.push('— '+speaker+' —');lines.push(content.replace(/<DNA>[\s\S]*?<\/DNA>/g,'').trim());lines.push('');
   });
-  lines.push('─'.repeat(44),'Powered by EONS AI · eons.studio','Contact: eonstudioanimation@gmail.com');
+  lines.push('─'.repeat(44), 'Powered by LEGACY by EONS · eons.studio','Contact: eonstudioanimation@gmail.com');
   const txt=lines.join(NL);
   const blob=new Blob([txt],{type:'text/plain;charset=utf-8'});
   const url=URL.createObjectURL(blob);
@@ -2236,7 +2236,7 @@ function addTeamMsg(role,text){
   const div=document.createElement('div');div.className='team-msg '+role;
   const av=document.createElement('div');av.className='team-msg-av';av.textContent=role==='user'?'RC':'✦';
   const content=document.createElement('div');content.className='team-msg-content';
-  const roleEl=document.createElement('div');roleEl.className='team-msg-role';roleEl.textContent=role==='user'?'Team':'EONS AI';
+  const roleEl=document.createElement('div');roleEl.className='team-msg-role';roleEl.textContent=role==='user'?'Team':'LEGACY';
   const textEl=document.createElement('div');textEl.className='team-msg-text';
   content.appendChild(roleEl);content.appendChild(textEl);
   div.appendChild(av);div.appendChild(content);msgs.appendChild(div);msgs.scrollTop=msgs.scrollHeight;
